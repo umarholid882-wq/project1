@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ky">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тасма — Заманбап Кинотеатр</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Башкы тилке (Header) -->
+    <header class="header">
+        <div class="container header-container">
+            <div class="logo">
+                <h1>🎬 Тасма</h1>
+            </div>
+            <nav class="nav">
+                <a href="#now-showing">Афиша</a>
+                <a href="#sessions-section">Сеанстар</a>
+                <a href="#upcoming">Жакында</a>
+                <a href="#reviews-section">Пикирлер</a>
+            </nav>
+            <div class="search-bar">
+                <input type="text" id="search-input" placeholder="Тасма издөө...">
+                <button id="search-btn">🔍</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Башкы беттин маалыматы -->
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Эң мыкты тасмалар биздин экранда</h2>
+            <p>Жаңы премьералар, ыңгайлуу залдар жана унутулгус сезимдер. Билетиңизди азыртан брондоңуз!</p>
+            <a href="#now-showing" class="btn btn-primary">Афишаны көрүү</a>
+        </div>
+    </section>
+
+    <!-- Афиша: Азыр көрсөтүлүп жаткандар -->
+    <main class="container">
+        <section id="now-showing" class="section">
+            <h2 class="section-title">Азыр көрсөтүлүүдө</h2>
+            <div class="movie-grid" id="now-showing-grid">
+                <!-- JS аркылуу толтурулат -->
+            </div>
+        </section>
+
+        <!-- Сеанстар жана чыпкалоо -->
+        <section id="sessions-section" class="section">
+            <h2 class="section-title">Сеанстар</h2>
+            <div class="filters">
+                <select id="filter-date">
+                    <option value="all">Бардык күндөр</option>
+                    <option value="today">Бүгүн</option>
+                    <option value="tomorrow">Эртең</option>
+                </select>
+                <select id="filter-movie">
+                    <option value="all">Бардык тасмалар</option>
+                    <!-- JS толтурат -->
+                </select>
+            </div>
+            <div class="sessions-list" id="sessions-list">
+                <!-- JS аркылуу толтурулат -->
+            </div>
+        </section>
+
+        <!-- Билет брондоо (Башында жашырылган) -->
+        <section id="booking-section" class="section hidden">
+            <h2 class="section-title">Билет брондоо: <span id="booking-movie-title"></span></h2>
+            <p class="booking-info">Убакыты: <span id="booking-time"></span> | Баасы: 300 сом</p>
+            
+            <div class="screen">Экран</div>
+            <div class="seat-map" id="seat-map">
+                <!-- JS аркылуу толтурулат -->
+            </div>
+            
+            <div class="seat-legend">
+                <div class="legend-item"><div class="seat"></div> Бош</div>
+                <div class="legend-item"><div class="seat selected"></div> Тандалган</div>
+                <div class="legend-item"><div class="seat occupied"></div> Бош эмес</div>
+            </div>
+
+            <div class="booking-summary">
+                <p>Тандалган билет: <span id="ticket-count">0</span></p>
+                <p>Жалпы сумма: <span id="total-price">0</span> сом</p>
+                <button id="book-btn" class="btn btn-primary" disabled>Брондоо</button>
+                <button id="cancel-booking-btn" class="btn btn-secondary">Жокко чыгаруу</button>
+            </div>
+        </section>
+
+        <!-- Жакында чыга турган тасмалар -->
+        <section id="upcoming" class="section">
+            <h2 class="section-title">Жакында премьералар</h2>
+            <div class="movie-grid" id="upcoming-grid">
+                <!-- JS аркылуу толтурулат -->
+            </div>
+        </section>
+
+        <!-- Пикирлер жана баалоо -->
+        <section id="reviews-section" class="section">
+            <h2 class="section-title">Пикирлер</h2>
+            <div class="reviews-container">
+                <form id="review-form" class="review-form">
+                    <h3>Пикир калтырыңыз</h3>
+                    <input type="text" id="reviewer-name" placeholder="Атыңыз" required>
+                    <div class="star-rating">
+                        <label>Баалоо: </label>
+                        <select id="review-rating">
+                            <option value="5">⭐⭐⭐⭐⭐ (5)</option>
+                            <option value="4">⭐⭐⭐⭐ (4)</option>
+                            <option value="3">⭐⭐⭐ (3)</option>
+                            <option value="2">⭐⭐ (2)</option>
+                            <option value="1">⭐ (1)</option>
+                        </select>
+                    </div>
+                    <textarea id="review-text" rows="4" placeholder="Пикириңизди жазыңыз..." required></textarea>
+                    <button type="submit" class="btn btn-primary">Жөнөтүү</button>
+                </form>
+                
+                <div class="reviews-list" id="reviews-list">
+                    <!-- JS аркылуу толтурулат -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Трейлер / Маалымат Модалдык терезеси -->
+    <div id="modal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="close-modal">&times;</button>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <!-- Эскертме -->
+    <div id="toast" class="toast"></div>
+
+    <!-- Башына кайтуу баскычы -->
+    <button id="back-to-top" title="Өйдө чыгуу">⬆</button>
+
+    <script src="script.js"></script>
+</body>
+</html>
